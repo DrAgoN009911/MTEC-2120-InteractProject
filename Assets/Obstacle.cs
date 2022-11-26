@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private Transform Player;
-    [SerializeField] private Transform SpawnPoint;
 
-    void OnCollisionEnter(Collision coll)
+    
+   private void OnCollisionEnter (Collision collision)
     { 
-    if (coll.gameObject.tag == "Player")
+    if (collision.gameObject.CompareTag("Player"))
         
     {
-        Player.transform.position = SpawnPoint.transform.position;
-    }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 }
 
 }
