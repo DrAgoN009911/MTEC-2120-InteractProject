@@ -7,16 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class Obstacle : MonoBehaviour
 {
-
+    [SerializeField] private Transform Player;
+    [SerializeField] private Transform SpawnPoint;
     
-   private void OnCollisionEnter (Collision collision)
+    void OnCollisionEnter (Collision coll)
     { 
-    if (collision.gameObject.CompareTag("Player"))
+    if (coll.gameObject.tag == "Player")
         
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Player.transform.position = SpawnPoint.transform.position;
         }
-}
+    }
 
 }
 
